@@ -1,0 +1,348 @@
+{
+    "info": {
+        "_postman_id": "7fb57053-8762-4b04-94ba-2602a789fdb2",
+        "name": "Football-escrow",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "Auth",
+            "item": [
+                {
+                    "name": "Signup",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:3000/api/auth/signup",
+                            "path": [
+                                "api",
+                                "auth",
+                                "signup"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"username\": \"SpiffGreen\",\n  \"password\": \"pass123\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Login",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:3000/api/auth/signin",
+                            "path": [
+                                "api",
+                                "auth",
+                                "signin"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"username\": \"SpiffGreen\",\n  \"password\": \"pass123\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Profile",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:3000/api/auth/profile",
+                            "path": [
+                                "api",
+                                "auth",
+                                "profile"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000"
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "{{accessToken}}"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Games",
+            "item": [
+                {
+                    "name": "Get games",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:3000/api/games",
+                            "path": [
+                                "api",
+                                "games"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000"
+                        }
+                    }
+                },
+                {
+                    "name": "Place bet",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:3000/api/games/place-bet",
+                            "path": [
+                                "api",
+                                "games",
+                                "place-bet"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000"
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "{{accessToken}}"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Get bets",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:3000/api/games/bets",
+                            "path": [
+                                "api",
+                                "games",
+                                "bets"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000"
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "{{accessToken}}"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Get open bets",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:3000/api/games/open-bets",
+                            "path": [
+                                "api",
+                                "games",
+                                "open-bets"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000"
+                        }
+                    }
+                },
+                {
+                    "name": "Open bet ",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:3000/api/games/open-bet",
+                            "path": [
+                                "api",
+                                "games",
+                                "open-bet"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000"
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "{{accessToken}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"gameId\": 2,\n  \"whoWins\": \"a\",\n  \"stakeAmount\": 200\n}"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Payments",
+            "item": [
+                {
+                    "name": "Fund wallet",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:3000/api/payments/fund-wallet",
+                            "path": [
+                                "api",
+                                "payments",
+                                "fund-wallet"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"email\": \"spiffjekeygreen@gmail.com\",\n  \"amount\": \"4000\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Withdraw funds",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:3000/api/payments/withdraw-funds/",
+                            "path": [
+                                "api",
+                                "payments",
+                                "withdraw-funds"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000"
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "{{accessToken}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"amount\": 3000\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Transaction webhook",
+                    "request": {
+                        "method": "GET"
+                    }
+                },
+                {
+                    "name": "Set bank",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:3000/api/payments/set-bank",
+                            "path": [
+                                "api",
+                                "payments",
+                                "set-bank"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000"
+                        },
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "{{accessToken}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"name\": \"Spiff Jekey-Green\",\n  \"accountNumber\": \"9156009511\",\n  \"bankCode\": \"999992\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "List banks",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:3000/api/payments/banks",
+                            "path": [
+                                "api",
+                                "payments",
+                                "banks"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
