@@ -27,11 +27,10 @@ func RequireAuth(c *gin.Context) {
 	})
 
 	if err != nil {
-		log.Fatal(err)
-		c.JSON(http.StatusBadRequest, gin.H{
+		log.Println(err)
+		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
 			"message": "Invalid access token",
 		})
-		return
 	}
 
 	if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
