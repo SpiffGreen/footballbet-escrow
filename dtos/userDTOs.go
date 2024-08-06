@@ -1,9 +1,9 @@
 package dtos
 
 type CreateAccount struct {
-	Username string
-	Password string
-	Email    string
+	Username string `form:"username"`
+	Password string `form:"password"`
+	Email    string `form:"email"`
 }
 
 type LoginAccount struct {

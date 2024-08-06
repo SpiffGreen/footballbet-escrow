@@ -25,6 +25,14 @@ func CreateAccount(c *gin.Context) {
 		return
 	}
 
+	// check for user
+	if initializers.DB.First(&model.User{}, "username = ? OR email = ?", body.Username, body.Email).Error == nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": "Username or email already in use",
+		})
+		return
+	}
+
 	// Create user
 	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(body.Password), 10)
 	if err != nil {
@@ -33,7 +41,8 @@ func CreateAccount(c *gin.Context) {
 		})
 		return
 	}
-	user := model.User{Username: body.Username, Password: string(hashedPassword)}
+
+	user := model.User{Username: body.Username, Password: string(hashedPassword), Email: body.Email}
 	result := initializers.DB.Create(&user)
 
 	if result.Error != nil {
