@@ -5,7 +5,7 @@ FootballBet-Escrow API is a simple API for showcasing an escrow service.
 
 ## Tech Stack
 
-GO, Gin, Gorm, Postgresql
+GO, Gin, Gorm, SQLite
 
 [Soccerfootball Info API - RapidAPI](https://rapidapi.com/soccerfootball-info-soccerfootball-info-default/api/soccer-football-info/playground/apiendpoint_c6020c0a-9773-499f-bc5d-81c49ed25ee2)
 
